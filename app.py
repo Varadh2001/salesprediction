@@ -28,27 +28,29 @@ add_bg_from_local('ss.jpg')
  
 df = pd.read_csv('train.csv')
 
-X_train, X_test, y_train, y_test = train_test_split(df[['store', 'item', 'date']], df['sales'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df[['store', 'item', 'day']], df['sales'], test_size=0.2, random_state=42)
 model = DecisionTreeRegressor()
 model.fit(X_train, y_train)
 
 accuracy = model.score(X_test, y_test)
 print("model used:",model)
 print("r2:", accuracy)
-date = '2023-03-12' # Example date
+date = 'Monday' # Example date
 store = 1 # Example store number
 item = 1 # Example item number
-prediction = model.predict([[store, item, date]])
+prediction = model.predict([[store, item, day]])
 print("Prediction:", prediction)
 import streamlit as st
 
 # Create the input form
 st.write("# Sales Prediction App")
-date = st.date_input("Select the date")
+date =st.selectbox(
+    'select a day',
+    ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'))
 store = st.number_input("Enter the store number", min_value=1, max_value=10)
 item = st.number_input("Enter the item number", min_value=1, max_value=50)
 
 # Make the prediction
 if st.button("Predict"):
-    prediction = model.predict([[store, item, date]])
-    st.write("The predicted sales for {} at store {} for item {} is {}".format(date, store, item, prediction))
+    prediction = model.predict([[store, item, day]])
+    st.write("The predicted sales for {} at store {} for item {} is {}".format(day, store, item, prediction))
