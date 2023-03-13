@@ -44,7 +44,7 @@ import streamlit as st
 
 # Create the input form
 st.write("# Sales Prediction App")
-date =st.selectbox(
+day =st.selectbox(
     'select a day',
     ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'))
 store = st.number_input("Enter the store number", min_value=1, max_value=10)
