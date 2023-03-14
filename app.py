@@ -26,7 +26,7 @@ def add_bg_from_local(image_file):
 add_bg_from_local('ss.jpg')  
 
  
-df = pd.read_csv('train.csv')
+df = pd.read_csv('train (1).csv')
 df['date'] = pd.to_datetime(df['date'])
 
 X_train, X_test, y_train, y_test = train_test_split(df[['store', 'item']], df['sales'], test_size=0.2, random_state=42)
