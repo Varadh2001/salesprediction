@@ -35,7 +35,7 @@ model.fit(X_train, y_train)
 accuracy = model.score(X_test, y_test)
 print("model used:",model)
 print("r2:", accuracy)
-date = 'Monday' # Example date
+day = 'Monday' # Example date
 store = 1 # Example store number
 item = 1 # Example item number
 prediction = model.predict([[store, item, day]])
