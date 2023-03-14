@@ -52,4 +52,4 @@ item = st.number_input("Enter the item number", min_value=1, max_value=50)
 # Make the prediction
 if st.button("Predict"):
     prediction = model.predict([[store, item, date]])
-    st.write("The predicted sales for {} at store {} for item {} is {}".format(date, store, item, prediction)
+    st.write("The predicted sales for {} at store {} for item {} is {}".format(date, store, item, prediction))
